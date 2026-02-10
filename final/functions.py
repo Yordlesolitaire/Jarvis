@@ -1,0 +1,42 @@
+import time
+from datetime import datetime,timedelta
+from dateutil.relativedelta import relativedelta
+
+
+def get_hour(hour_recoil=0, minute_recoil=0, second_recoil=0, seconds=False):
+    now = datetime.now()
+    
+    delta = timedelta(
+        hours=hour_recoil,
+        minutes=minute_recoil,
+        seconds=second_recoil
+    )
+    
+    result = now + delta
+
+    if seconds:
+        return result.strftime("%H:%M:%S")
+    return result.strftime("%H:%M")
+
+
+def get_date(day_recoil=0, month_recoil=0, year_recoil=0):
+    return (datetime.now() + relativedelta(
+        days=day_recoil,
+        months=month_recoil,
+        years=year_recoil
+    )).strftime("%d-%m-%Y")
+
+
+#print(horloge())
+
+
+#for i in range(120):
+#    print(i % 60)
+
+print(get_hour(seconds=True))                     # "14:32"
+print(get_hour(-1,20,5,True))
+
+
+print(get_date())
+
+print(end="\n\n\n")
