@@ -13,6 +13,3 @@ with open(PATH,"r",encoding="utf-8") as f:
    lang = Locale.parse(lang_code).get_display_name("fr")
    data = f.read()
    data += f'"\nTu réponds en {lang}"'
-
-
-print(data)

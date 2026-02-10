@@ -1,7 +1,7 @@
 import time
 from datetime import datetime,timedelta
 from dateutil.relativedelta import relativedelta
-
+import subprocess
 
 def get_hour(hour_recoil=0, minute_recoil=0, second_recoil=0, seconds=False):
     now = datetime.now()
@@ -27,16 +27,5 @@ def get_date(day_recoil=0, month_recoil=0, year_recoil=0):
     )).strftime("%d-%m-%Y")
 
 
-#print(horloge())
-
-
-#for i in range(120):
-#    print(i % 60)
-
-print(get_hour(seconds=True))                     # "14:32"
-print(get_hour(-1,20,5,True))
-
-
-print(get_date())
-
-print(end="\n\n\n")
+def Launch_game(game_name=input("Game : ")):
+    pass

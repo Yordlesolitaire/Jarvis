@@ -1,0 +1,16 @@
+.Header{
+    height: var(--header_height);
+    width: 100%;
+    /* background-color: var(--bg); */
+    background: radial-gradient(circle,var(--bg2),var(--bg));
+    border-bottom:solid 2px var(--border) ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header h1{
+    font-family: 'Orbitron', sans-serif;
+    color: var(--border);
+}
