@@ -1,21 +1,24 @@
-import React from "react";
-import Header from "./Components/Header/Header";
-import { Widgets } from "./Components/widgets/widgets";
-import "./style.css"
-
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const widgets = Widgets()
   return (
-    <>
-    <Header/>
-      <div className="content">
-        {/* {Array.from({length: 100}, (_, i) => {return <div key={i}></div>;})} */}
-        {widgets.map((item, index) => (
-          <React.Fragment key={index}>{item}</React.Fragment>
-        ))}
-      </div>
-    </>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
