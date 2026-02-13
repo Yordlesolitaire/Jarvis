@@ -18,13 +18,16 @@ function createWindow() {
   const isDev = !app.isPackaged;
 
   if (isDev) {
-    // 🔥 Charge le site React en priorité
-    win.loadURL("http://localhost:3000");
+    win.loadURL("http://localhost:3000")
+      .catch(() => {
+        const indexPath = path.join(__dirname, "../build/index.html");
+        win.loadFile(indexPath);
+      });
   } else {
-    // 📦 Charge le build en production
     const indexPath = path.join(__dirname, "../build/index.html");
     win.loadFile(indexPath);
   }
+
 }
 
 app.whenReady().then(createWindow);

@@ -4,7 +4,7 @@ import style from "./Connexion.module.css";
 export default function Connexion() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const message = "";
   const handleSubmit = async () => {
     try {
       const res = await fetch("http://localhost:5000/login", {
@@ -22,6 +22,7 @@ export default function Connexion() {
       console.log("Réponse serveur :", data);
 
     } catch (error) {
+      message = `Erreur lors de la connexion : ${error}`
       console.error("Erreur lors de la connexion :", error);
     }
   };
@@ -47,7 +48,7 @@ export default function Connexion() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <p></p>
+        <p>{message}</p>
 
         <button type="button" onClick={handleSubmit}>
           <h2>Connexion</h2>
