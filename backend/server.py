@@ -7,7 +7,8 @@ from pathlib import *
 
 PATH = Path(__file__).parent
 DATAPATH = os.path.join(PATH.parent,"data")
-DBPATH = os.path.join(DATAPATH,"database\\DATABASE.db")
+DBPATH = os.path.join(DATAPATH,"database")
+DBfilePATH = os.path.join(DBPATH,"DATA.db")
 
 
 
@@ -17,18 +18,19 @@ CORS(app)  # Permet à React/Electron d'accéder à l'API
 # Route test
 @app.route("/")
 def index():
-    return jsonify(str(PATH),str(DATAPATH))
+    return jsonify(str(PATH),str(DATAPATH),str(DBfilePATH))
 
 @app.route("/login",methods=["POST"])
 def login():
-    Connection = sqlite3.connect(DBPATH)
+    Connection = sqlite3.connect(DBfilePATH)
     cursor = Connection.cursor()
     data = request.json
     print(data["username"])
     print(data["password"])
-    return jsonify(data)
+    
+    return(data)
 
 
 
 if __name__ == "__main__":
-    app.run(host="192.168.1.32", debug=True)
+    app.run(host="localhost", debug=True)

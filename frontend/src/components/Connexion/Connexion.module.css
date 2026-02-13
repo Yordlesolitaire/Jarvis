@@ -49,7 +49,7 @@
 
 .Connexion button{
     width: 50%;
-    height: 2rem;
+    height: 3rem;
     cursor: pointer;
     border-radius: 1rem;
     border: solid 2px var(--primary);

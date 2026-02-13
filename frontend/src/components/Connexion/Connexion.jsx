@@ -5,22 +5,32 @@ export default function Connexion() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    // Ici tu peux envoyer les données à ton backend Flask
-    fetch("http://192.168.1.32:5000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("Réponse serveur :", data));
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      // Vérifie si le serveur a répondu avec une erreur HTTP (500, 404, etc.)
+      if (!res.ok) {
+        throw new Error(`Erreur serveur : ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log("Réponse serveur :", data);
+
+    } catch (error) {
+      console.error("Erreur lors de la connexion :", error);
+    }
   };
 
   return (
     <main className={style.main}>
       <form
         className={style.Connexion}
-        onSubmit={(e) => e.preventDefault()} // empêche le reload
+        onSubmit={(e) => e.preventDefault()}
       >
         <h1>Connexion</h1>
 
@@ -37,6 +47,7 @@ export default function Connexion() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <p></p>
 
         <button type="button" onClick={handleSubmit}>
           <h2>Connexion</h2>
